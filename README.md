@@ -1,23 +1,23 @@
-import pygame
-import sys
+    import pygame
+    import sys
 
-pygame.init()
+    pygame.init()
 
 
-width, height = 300, 300
-screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Juego de Gato")
+    width, height = 300, 300
+    screen = pygame.display.set_mode((width, height))
+    pygame.display.set_caption("Juego de Gato")
 
-board = [['', '', ''],
-         ['', '', ''],
-         ['', '', '']]
+    board = [['', '', ''],
+            ['', '', ''],
+            ['', '', '']]
 
-black = (0, 0, 0)
-white = (255, 255, 255)
-
-def draw_board():
-    for i in range(1, 3):
-        pygame.draw.line(screen, black, (0, i * height / 3), (width, i * height / 3), 2)
+    black = (0, 0, 0)
+    white = (255, 255, 255)
+                  
+    def draw_board():
+       for i in range(1, 3):
+          pygame.draw.line(screen, black, (0, i * height / 3), (width, i * height / 3), 2)
 
     for i in range(1, 3):
         pygame.draw.line(screen, black, (i * width / 3, 0), (i * width / 3, height), 2)
@@ -30,11 +30,11 @@ def draw_board():
             text_rect = text.get_rect(center=(j * width / 3 + width / 6, i * height / 3 + height / 6))
             screen.blit(text, text_rect)
 
-def check_winner():
-    for i in range(3):
-        if board[i][0] == board[i][1] == board[i][2] != '':
+    def check_winner():
+      for i in range(3):
+         if board[i][0] == board[i][1] == board[i][2] != '':
             return True
-        if board[0][i] == board[1][i] == board[2][i] != '':
+         if board[0][i] == board[1][i] == board[2][i] != '':
             return True
 
     if board[0][0] == board[1][1] == board[2][2] != '':
@@ -44,9 +44,9 @@ def check_winner():
 
     return False
 
-def main():
-    turn = 'X'
-    game_over = False
+    def main():
+     turn = 'X'
+     game_over = False
 
     while not game_over:
         for event in pygame.event.get():
@@ -73,6 +73,6 @@ def main():
         screen.fill(white)
         draw_board()
         pygame.display.flip()
-
-if __name__ == "__main__":
-    main()
+ 
+      if __name__ == "__main__":
+          main()
